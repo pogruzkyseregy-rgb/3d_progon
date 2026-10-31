@@ -148,7 +148,7 @@ html, body {
 
 .buttons {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
 .buttons button {
@@ -167,5 +167,25 @@ html, body {
 }
 
 @media (max-width: 360px) {
-  .buttons button { font-size: 13px; padding: 10px 4px; }
+  .buttons button { font-size: 12px; padding: 10px 2px; }
+}
+
+/* Hearts shown when she is petted */
+.hearts {
+  position: fixed;
+  top: 28%;
+  left: 0;
+  right: 0;
+  height: 0;
+  pointer-events: none;
+}
+.heart {
+  position: absolute;
+  font-size: 28px;
+  transform: translate(-50%, 0);
+  animation: heart-float 1.3s ease-out forwards;
+}
+@keyframes heart-float {
+  from { opacity: 1; transform: translate(-50%, 0) scale(0.6); }
+  to   { opacity: 0; transform: translate(calc(-50% + var(--dx, 0px)), -120px) scale(1.1); }
 }

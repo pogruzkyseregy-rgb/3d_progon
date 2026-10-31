@@ -3,7 +3,7 @@
 //  2. shrinks the model: ~1.7M triangles -> ~100k, textures 2048 -> 1024
 // Run from the repo root after `npm install`:  npm run prepare-web
 
-import { cpSync, existsSync, mkdirSync, rmSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, rmSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -47,3 +47,14 @@ run(['simplify', src, simplified, '--ratio', SIMPLIFY_RATIO, '--error', SIMPLIFY
 run(['resize', simplified, outModel, '--width', TEXTURE_SIZE, '--height', TEXTURE_SIZE]);
 
 console.log(`model ready: ${outModel}`);
+
+// 3. Mixamo files (optional): models/mixamo/*.fbx -> web/anim/
+const mixamoDir = path.join(root, 'models', 'mixamo');
+const animOut = path.join(root, 'web', 'anim');
+rmSync(animOut, { recursive: true, force: true });
+if (existsSync(mixamoDir)) {
+  mkdirSync(animOut, { recursive: true });
+  const fbx = readdirSync(mixamoDir).filter((f) => f.toLowerCase().endsWith('.fbx'));
+  for (const f of fbx) cpSync(path.join(mixamoDir, f), path.join(animOut, f));
+  console.log(`copied ${fbx.length} Mixamo file(s) to web/anim`);
+}
