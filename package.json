@@ -1,0 +1,15 @@
+{
+  "name": "aurora-tamagotchi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AvrorA tamagotchi: feed, pet and dance with the Silver Fox Aurora model",
+  "type": "module",
+  "scripts": {
+    "prepare-web": "node tools/prepare.mjs",
+    "test": "node --test tests/state.test.mjs"
+  },
+  "devDependencies": {
+    "@gltf-transform/cli": "^4.0.0",
+    "three": "0.170.0"
+  }
+}

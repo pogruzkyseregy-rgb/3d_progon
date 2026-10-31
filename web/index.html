@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <title>AvrorA Tamagotchi</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three/build/three.module.js" } }
+  </script>
+</head>
+<body>
+  <canvas id="scene"></canvas>
+
+  <header class="top">
+    <h1>AVRORA</h1>
+    <p id="mood">…</p>
+  </header>
+
+  <div id="bubble" class="bubble" role="status" aria-live="polite"></div>
+
+  <div id="loading">
+    <div class="spinner"></div>
+    <p id="loading-text">Загрузка…</p>
+  </div>
+
+  <footer class="panel">
+    <p class="hint">Проведи пальцем по Авроре — погладить · тап — тык</p>
+
+    <div class="stats" id="stats">
+      <div class="stat" data-stat="fullness"><span>Сытость</span><div class="bar"><i></i></div></div>
+      <div class="stat" data-stat="mood"><span>Настроение</span><div class="bar"><i></i></div></div>
+      <div class="stat" data-stat="energy"><span>Энергия</span><div class="bar"><i></i></div></div>
+      <div class="stat" data-stat="affection"><span>Близость</span><div class="bar"><i></i></div></div>
+    </div>
+
+    <div class="buttons">
+      <button data-action="fish">🐟 Рыба</button>
+      <button data-action="berry">🍓 Ягода</button>
+      <button data-action="cake">🍰 Пирожное</button>
+      <button data-action="play">🎮 Играть</button>
+      <button data-action="dance">💃 Танец</button>
+      <button data-action="sleep">💤 Спать</button>
+    </div>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
